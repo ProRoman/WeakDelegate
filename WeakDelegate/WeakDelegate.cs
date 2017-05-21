@@ -79,11 +79,6 @@ namespace WeakDelegate
                 }
                 return combinedTarget as TDelegate;
             }
-            set
-            {
-                _targets.Clear();
-                Combine(value);
-            }
         }
     }
 }

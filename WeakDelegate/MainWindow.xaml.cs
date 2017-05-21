@@ -21,7 +21,7 @@ namespace WeakDelegate
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly WeakDelegate<EventHandler> _click = new WeakDelegate<EventHandler>();
+        private readonly WeakEvent<EventHandler> _click = new WeakEvent<EventHandler>();
 
         private IList<Subscriber> subscribers = new List<Subscriber>();
 
@@ -29,8 +29,8 @@ namespace WeakDelegate
 
         public event EventHandler Click
         {
-            add { _click.Combine(value); }
-            remove { _click.Remove(value); }
+            add { _click.AddHandler(value); }
+            remove { _click.RemoveHandler(value); }
         }
 
         public MainWindow()
@@ -53,7 +53,7 @@ namespace WeakDelegate
             {
                 while (IsDelegateAlive())
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(10000);
                 }
             });
             if (_click.Target == null)
