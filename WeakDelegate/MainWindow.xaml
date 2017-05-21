@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Create 1000 subscribers" HorizontalAlignment="Left" Height="85" Margin="124,50,0,0" VerticalAlignment="Top" Width="275" Click="Button_Click"/>
-        <Button Content="Release all subscribers" HorizontalAlignment="Left" Height="94" Margin="124,180,0,0" VerticalAlignment="Top" Width="275" Click="Button_Click_1"/>
-
+        <Button Content="Create 1000 subscribers" HorizontalAlignment="Left" Height="85" Margin="124,32,0,0" VerticalAlignment="Top" Width="275" Click="Button_Click"/>
+        <Button Content="Release all subscribers" HorizontalAlignment="Left" Height="94" Margin="124,122,0,0" VerticalAlignment="Top" Width="275" Click="Button_Click_1"/>
+        <Label Name="report" Content="All released" Visibility="Hidden" HorizontalAlignment="Left" Height="26" Margin="183,246,0,0" VerticalAlignment="Top" Width="147"/>
     </Grid>
 </Window>

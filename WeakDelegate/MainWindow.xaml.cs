@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,9 +46,26 @@ namespace WeakDelegate
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             subscribers.Clear();
+            await Task.Factory.StartNew(() =>
+            {
+                while (IsDelegateAlive())
+                {
+                    Thread.Sleep(5000);
+                }
+            });
+            if (_click.Target == null)
+            {
+                report.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool IsDelegateAlive()
+        {
+            EventHandler eventHandler = _click.Target;
+            return eventHandler != null;
         }
     }
 
@@ -64,11 +82,6 @@ namespace WeakDelegate
         private void OnClick(object sender, EventArgs eventArgs)
         {
             throw new NotImplementedException();
-        }
-
-        ~Subscriber()
-        {
-            Console.WriteLine(_name + " Destroed");
         }
     }
 }
